@@ -8,6 +8,8 @@ How to use
 
 1.Add your org domain to remote site settings as it uses tooling api to fetch data
 
-2.search for tab "view all components "
+2.Uncomment Code in ViewComponets class, Lazy to write test class
 
-3.Enjoy
+3.search for tab "view all components "
+
+4.Enjoy
