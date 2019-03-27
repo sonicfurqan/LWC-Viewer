@@ -1,8 +1,11 @@
 # LWC-Viewer
 Lightweight tab to view and edit LWC Component
 
-copy code or use Lightweight tab to view and edit LWC Component
+use Lightweight tab to view and edit LWC Component
 to add package to your org
+copy code and create tab for viewComponents component
+or install using https://login.salesforce.com/packaging/installPackage.apexp?p0=04t0o000002MqAA
+
 
 How to use
 
