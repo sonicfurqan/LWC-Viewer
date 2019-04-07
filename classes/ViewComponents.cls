@@ -2,7 +2,11 @@ public class ViewComponents {
     
     @AuraEnabled(cacheable=true)
     public static String allMetadaType(){
+<<<<<<< HEAD
       	List<ToolingAPIService.SObjectType> allMetadata=ToolingAPIService.SObjectType.values();
+=======
+      List<ToolingAPIService.SObjectType> allMetadata=ToolingAPIService.SObjectType.values();
+>>>>>>> c0ac79aa8a5e174fd08e2b78b52acd691715cec7
         List<String> mtadatatypes=new List<String>();
         for(ToolingAPIService.SObjectType md:allMetadata){
             if(md.name()=='LightningComponentBundle'){
@@ -18,7 +22,11 @@ public class ViewComponents {
     @AuraEnabled
     public static String getMetadataValueList(String metadataType){
         System.debug('metadataType '+metadataType);
+<<<<<<< HEAD
       	ToolingAPIService service=new ToolingAPIService();
+=======
+      ToolingAPIService service=new ToolingAPIService();
+>>>>>>> c0ac79aa8a5e174fd08e2b78b52acd691715cec7
         HttpResponse response=service.queryMetadata(ToolingAPIService.getENUMforString.get((metadataType)));
             return response.getBody();
     }
@@ -26,7 +34,11 @@ public class ViewComponents {
      @AuraEnabled
     public static String getWebComponentList(){
        
+<<<<<<< HEAD
       	ToolingAPIService service=new ToolingAPIService();
+=======
+      ToolingAPIService service=new ToolingAPIService();
+>>>>>>> c0ac79aa8a5e174fd08e2b78b52acd691715cec7
         HttpResponse response=service.queryMetadata(ToolingAPIService.SObjectType.LightningComponentBundle);
             return response.getBody();
     }
@@ -58,6 +70,7 @@ public class ViewComponents {
         HttpResponse response=service.updateWebDefinition(sourceString,id);
         return response.getBody();
     }
+<<<<<<< HEAD
     @AuraEnabled
     public static string createWebComponent(String fileName,Boolean isRecordPage,Boolean ishomePage,Boolean isallPage){
         ToolingAPIService service=new ToolingAPIService();
@@ -67,3 +80,8 @@ public class ViewComponents {
     
     
 }
+=======
+    
+    
+}
+>>>>>>> c0ac79aa8a5e174fd08e2b78b52acd691715cec7
