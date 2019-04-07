@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <auraComponent>LWCEditor</auraComponent>
+    <description>Lightweight Editor for Lighting Web components development
+By Syed Furqan Ahmed</description>
+    <label>Editor</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom67: 歯車</motif>
+</CustomTab>

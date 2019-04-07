@@ -1,43 +1,88 @@
 <template>
 
-
     <lightning-card title={countOfMetadata}>
-        <lightning-button label="Refresh" slot="actions" title="Refresh" onclick={connectedCallback} ></lightning-button>
-        <lightning-button label="Save" slot="actions" title="Save" onclick={handlesaveClick} disabled={saving} ></lightning-button>
+        <lightning-button label="Refresh" slot="actions" title="Refresh" onclick={connectedCallback}></lightning-button>
+        <lightning-button label="Save" slot="actions" title="Save" onclick={handlesaveClick} disabled={saving}></lightning-button>
+        <lightning-button label="New" slot="actions" title="New" onclick={togglepopup} disabled={saving}></lightning-button>
+
         <div class="slds-is-relative" slot="actions" if:true={saving}>
-                <lightning-spinner  alternative-text="saving"  slot="actions"  size="small"></lightning-spinner>
+            <lightning-spinner alternative-text="saving" slot="actions" size="small"></lightning-spinner>
         </div>
-        
-         <p class="slds-p-around_small slds-is-relative">
+        <!--search-->
+        <div if:true={showFile} onkeyup={handleKeyUp}>
+            <lightning-input name="enter-search" label="Search" type="search">
+            </lightning-input>
+        </div>
+        <p class="slds-p-around_small slds-is-relative" style="height: 600px;max-height: 600px;">
             <lightning-spinner if:true={isLoading} alternative-text="Loading" size="medium"></lightning-spinner>
             <!--continer-->
             <lightning-layout if:false={isLoading}>
                 <!--selection-->
-                <lightning-layout-item padding="around-xx_small"
-                    class=" slds-box slds-size_2-of-6 slds-m-around_xx-small">
-                    <lightning-tree items={resultList} onselect={handleSelectTreeSelect}>
+
+                <lightning-layout-item if:true={showFile} class="slds-size_2-of-6 slds-scrollable_y" style="height: 595   px">
+                    <lightning-tree if:false={istreeLoading} items={resultList} onselect={handleSelectTreeSelect}>
                     </lightning-tree>
+                    <b if:true={istreeLoading}>Loading...</b>
                 </lightning-layout-item>
+
                 <!--view-->
-                <lightning-layout-item class=" slds-box slds-size_4-of-6 slds-m-around_xx-small">
-                    
-                    
-                
-                        <textarea id="codeContiner" onkeyup={handleCodeEvent} >   {showResult}  </textarea>
-                        
+                <lightning-layout-item class={layout} style="height: 595px">
+                    <iframe if:true={ace} src="/apex/LWCEditor" class="iframecontainer"></iframe>
+                    <textarea if:false={ace} id="codeContiner" onkeyup={handleCodeEvent}>   {showResult}  </textarea>
                 </lightning-layout-item>
             </lightning-layout>
-
         </p>
         <p slot="footer">
             {timestamp}
-
-            <b style="color:red;" class="slds-float_right">Disclaimer :No validation on save. Wrong code may be saved if not checked</b>
+        </p>
+    </lightning-card>
+    <lightning-card title="Configuration">
+        <lightning-input type="toggle" label="Switch TO Editor" name="Editor" onchange={swichEditor}></lightning-input>
+        <lightning-input type="toggle" label="Show File Section" name="File" onchange={toggleFiles} checked></lightning-input>
+        <p slot="footer">
+            By Syed Furqan Ahmed
         </p>
     </lightning-card>
 
 
+    <div if:true={showpopup} class="demo-only" style="height: 640px;">
+        <section role="dialog" tabindex="-1" aria-label="Meaningful description of the modal content" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header slds-modal__header_empty">
+                    <button onclick={togglepopup} class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+                        X
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                </header>
+                
+                <div class="slds-is-relative slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning-spinner if:true={creatingFile} alternative-text="Creating" slot="actions" size="small"></lightning-spinner>
+                    <p if:false={creatingFile}>
+                        <lightning-input
+                            name="fileName"
+                            value={fileName}
+                            label="Enter File Name"
+ onchange={updateValue}
+                            >
 
+                        </lightning-input>
+                    </p>
+                    <p if:false={creatingFile}>
+                        <lightning-input  type="checkbox"  value={recordPage} label="Avilable for record page" name="recod" onchange={updateValue}></lightning-input> 
+                        <lightning-input type="checkbox"  value={homepage}  label="Avilable for home page" name="home" onchange={updateValue}></lightning-input>
+                        <lightning-input  type="checkbox" value={allpage}  label="Avilable for all page" name="allp" onchange={updateValue}></lightning-input>
+
+
+                    </p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <button onclick={togglepopup} class="slds-button slds-button_neutral">Cancel</button>
+                    <button disabled={creatingFile} onclick={handleNewClick} class="slds-button slds-button_brand">Create</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
 
 
 

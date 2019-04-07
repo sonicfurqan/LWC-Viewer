@@ -11,9 +11,13 @@ public class ToolingAPIServiceTest {
         service.queryWebBundle('queryWebBundle');
         service.updateAuraDefinition('queryAuraBundle','id');
         service.updateWebDefinition('queryWebBundle','id');
-        ViewWebController.getWebComponentList();
-        ViewWebController.getWebComponent('id');
-        ViewWebController.setWebComponent('id','body'); 
+        ViewComponents.allMetadaType();
+        ViewComponents.getWebComponentList();
+        ViewComponents.getMetadataValueList('id');
+        ViewComponents.getAuraComponent('id'); 
+        ViewComponents.getWebComponent('id'); 
+        ViewComponents.setAuraComponent('id','s');
+        ViewComponents.setWebComponent('id','s');
         Test.stopTest();
     }
 	public class ToolingAPIServiceMock implements HttpCalloutMock {

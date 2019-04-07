@@ -1,0 +1,55 @@
+<aura:component implements='flexipage:availableForAllPageTypes' >
+    
+    <ul class="slds-list--vertical slds-has-cards slds-has-block-links--space slds-has-list-interactions">
+        <li class="slds-list__item">
+            <dl class="slds-dl--inline">
+                <dt class="slds-dl--inline__label"> 1.Add Your domain url to Remote Site setting </dt>
+                <dd class="slds-dl--inline__label">a. Get url by executing URL.getSalesforceBaseUrl().toExternalForm() </dd>
+            </dl>
+            
+            
+        </li>
+        <li class="slds-list__item">
+            <dl class="slds-dl--inline">
+                <dt class="slds-dl--inline__label"> 2.Update your domain name to custom label DomainName if you want to use editor option</dt>
+                <dd class="slds-dl--inline__label"> a.If click jack protoection is enablend in your org add vf page and lighting urls to whitelisting by going to setup>sessionsetings>add whitlist</dd>
+                
+            </dl>    
+            
+            
+            
+        </li>
+        
+        <li class="slds-list__item">
+            <dl class="slds-dl--inline">
+                <dt class="slds-dl--inline__label">    3.Editor Shortcut</dt>
+                <dd class="slds-dl--inline__label"> a.CNTRL+S=saves file</dd>
+                <dd class="slds-dl--inline__label"> b.SHIFT+TAB=Prettify code</dd>
+                <dd class="slds-dl--inline__label"> c.CNTRL+Space=Show autocomplete code</dd>
+                <dd class="slds-dl--inline__label"> d. Alt-Shift-F=Toggle Full screen </dd>
+               
+            </dl>    
+            
+            
+            
+            
+        </li>
+        
+        <li class="slds-list__item">
+            4.toggle editor by using Switch TO Editor 
+        </li>
+        
+        <li class="slds-list__item">
+            5.toggel editor full screen by using Show File Section 
+        </li>
+        
+        
+    </ul>
+    
+    
+    
+    
+    
+    
+    
+</aura:component>
