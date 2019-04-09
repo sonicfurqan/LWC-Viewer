@@ -23,12 +23,26 @@ a.If click jack protoection is enablend in your org add vf page and lighting url
 
 5.Editor Shortcut 
 
-a.CNTRL+S=saves file 
+a.Ctrl+S=saves file 
 
 b.SHIFT+TAB=Prettify code 
 
-c.CNTRL+Space=Show autocomplete code 
+c.Ctrl+Space=Show autocomplete code 
 
 d. Alt-Shift-F=Toggle Full screen
 
 
+
+
+Known Issue
+
+1.When using editor postMessage is not working 
+
+Fix this by preview LWCEditor vf page copy url and replace the text in sourceOfIframe in vewweb LWC Component
+
+2.Editor and New is not working with org with namespace
+
+Fix this by adding name space to methods that are being called from vewweb and update url in sourceOfIframe and in origon of vf page
+
+3.During creation in component select interface if addedd to meta file after creation it doesnt seems to work
+SF Api error
